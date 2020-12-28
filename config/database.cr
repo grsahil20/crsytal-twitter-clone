@@ -1,4 +1,4 @@
-database_name = "twitter_#{Lucky::Env.name}"
+database_name = "twitter_crystal_#{Lucky::Env.name}"
 
 AppDatabase.configure do |settings|
   if Lucky::Env.production?
