@@ -3,26 +3,21 @@ class Users::ShowPage < MainLayout
 
   def content
     h1 user.email
-    # all_users_table
+    edit_link
+    # user_profile
+    # user_recent_tweets
   end
 
-  private def all_users_table
-    table do
-      thead do
-        th "Names"
-        th "Email"
-      end
-      tbody do
-        tr do
-          td "aaa"
-          td "aaa"
-        end
-      end
-    end
-    h3 "Next, you may want to:"
-    ul do
-      li "Modify this page: src/pages/me/show_page.cr"
-      li "Change where you go after sign in: src/actions/home/index.cr"
-    end
+  private def user_profile
+    span "user_profile"
+  end
+
+  private def user_recent_tweets
+    span "user_recent_tweets"
+  end
+
+  private def edit_link
+    return unless user === current_user
+    link "Edit", to: Users::Edit.with(user)
   end
 end

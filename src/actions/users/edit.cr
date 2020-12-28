@@ -1,12 +1,9 @@
-class Users::Show < BrowserAction
+class Users::Edit < BrowserAction
   route do
     user = fetch_user(user_id)
+    save_user = SaveUser.new(user)
 
-    html Users::ShowPage, user: user
-  end
-
-  def page_title
-    user.id + " | " + user.email
+    html Users::EditPage, user: user, save_user: save_user
   end
 
   memoize def fetch_user(user_id : String) : User
