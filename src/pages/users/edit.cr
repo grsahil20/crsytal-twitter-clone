@@ -4,12 +4,12 @@ class Users::EditPage < MainLayout
 
   def content
     h1 user.email
-    user_form
+    user_form(save_user)
   end
 
-  private def user_form
+  private def user_form(op)
     form_for Users::Update.with(user) do
-      mount Shared::Field, save_user.email
+      mount Shared::TailField, op.email, &.text_input(append_class: "hello border border-transparent")
       submit "Save User"
     end
   end
