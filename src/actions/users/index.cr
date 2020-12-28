@@ -1,5 +1,11 @@
 class Users::Index < BrowserAction
-  get "/users" do
-    html Users::IndexPage
+  route do
+    pages, users = paginate(UserQuery.new, per_page: 50)
+
+    html Users::IndexPage, users: users, pages: pages
+  end
+
+  def page_title
+    "List of users"
   end
 end
